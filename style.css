@@ -25,6 +25,12 @@ button {
     border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s;
+    color: black; /* Explicitly set the text color to black */
+    background-color: #ff6781;
+}
+
+button:hover {
+    background-color: #db5565;
 }
 
 #yesBtn {
