@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yay, Valentine!</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column; /* Ensure content is laid out vertically */
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffccd5;
+            text-align: center;
+        }
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            animation: firework-animation 1s ease-out infinite;
+            opacity: 0;
+        }
+        @keyframes firework-animation {
+            from {
+                opacity: 1;
+                transform: translate(0);
+            }
+            to {
+                opacity: 0;
+                transform: translate(0, -300px);
+            }
+        }
+        .typing {
+            white-space: pre-wrap; /* Keeps the text formatting */
+            overflow: hidden; /* Ensures the content is not revealed until animation */
+            animation: typing 3.5s steps(100, end), blink-caret .75s step-end infinite;
+            margin-top: 20px;
+            color: #ffffff;
+            font-size: 18px;
+            max-width: 90%; /* Prevents the text from being too wide on larger screens */
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Yay, congratulations LaRiece! You are now my Valentine! 🎉❤️</h1>
+    <div id="typingMessage" class="typing"></div>
+    <script>
+        function createFirework() {
+            const firework = document.createElement('div');
+            firework.classList.add('firework');
+            firework.style.left = Math.random() * 100 + 'vw';
+            firework.style.bottom = Math.random() * 100 + 'px';
+            firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            document.body.appendChild(firework);
+            setTimeout(() => firework.remove(), 1000);
+        }
+        setInterval(createFirework, 200);
+
+        // Typing animation script
+        const message = "So theres only a few more days until we see eachother so yay. But I did feel really bad about completely forgetting about valentines day because i had wanted to ask you…. so, well here(yes i know its a bit late) but really I am happy to have you in my life, even if we dont get to talk all the time nor see eachother constantly but i think thats nice in its own way since it makes our time more valuable, but really a pretty girl like u shouldn't have no valentine…… Also youll have to let me know what option you chose bc I completly forgot how to code form sending in Css😭";
+        let index = 0;
+        function typeMessage() {
+            if (index < message.length) {
+                document.getElementById('typingMessage').innerHTML += message.charAt(index);
+                index++;
+                setTimeout(typeMessage, 30); // Adjust typing speed (50ms)
+            }
+        }
+        window.onload = function() {
+            setTimeout(typeMessage, 1000); // Start typing 1s after page load
+        };
+    </script>
+</body>
+</html>
